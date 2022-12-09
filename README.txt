@@ -11,7 +11,7 @@ pipenv install --ignore-pipfile
 
 On VSCODE use the shortcut Ctrl + Shift + P and type "Python: Select Interpreter" and select the option with "local-api"
 
-Startin the server during development to see the changes immediately with hot reload:
+Starting the server during development to see the changes immediately with hot reload:
 pipenv run uvicorn main:app --reload
 
 Starting the server on Raspberry Pi:
