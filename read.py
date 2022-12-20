@@ -3,6 +3,7 @@ import MFRC522
 import cv2
 
 GPIO.setmode(GPIO.BOARD)  # Set GPIO pin numbering
+MIFAREReader = MFRC522.MFRC522()
 
 
 def read_qr():
@@ -18,13 +19,13 @@ def read_qr():
 
 
 def read_rfid():
-    MIFAREReader = MFRC522.MFRC522()
     GPIO.setup(12, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
     if (GPIO.input(12) == False):
+        (status,TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
         (status, uid) = MIFAREReader.MFRC522_Anticoll()
         if status == MIFAREReader.MI_OK:
             data = "".join(map(str, uid))
             return data
-
+        
     return ""

@@ -15,7 +15,7 @@ app.add_middleware(
 @app.get("/rfid")
 async def rfid():
     start = time()
-    while (time() - start) < 5:
+    while (time() - start) < 10:
         data = read_rfid()
         if data:
             return {"id": data}
@@ -26,7 +26,7 @@ async def rfid():
 @app.get("/qrcode")
 async def qrcode():
     start = time()
-    while (time() - start) < 5:
+    while (time() - start) < 10:
         data = read_qr()
         if data:
             return {"id": data}
